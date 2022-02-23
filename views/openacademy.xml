@@ -46,6 +46,32 @@
     <menuitem id="menu_open_academy" name="OpenAcademy" sequence="10" action="action_list_course"/>
     <menuitem id="menu_course" parent="menu_open_academy" name="Courses" sequence="10" action="action_list_course"/>
 
-    
-   
+    <!-- session form view -->
+    <record model="ir.ui.view" id="session_form_view">
+        <field name="name">session.form</field>
+        <field name="model">openacademy.session</field>
+        <field name="arch" type="xml">
+            <form string="Session Form">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="start_date"/>
+                        <field name="duration"/>
+                        <field name="seats"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="session_list_action">
+        <field name="name">Sessions</field>
+        <field name="res_model">openacademy.session</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="session_menu" name="Sessions"
+                parent="menu_open_academy"
+                action="session_list_action"/>
+
 </odoo>
